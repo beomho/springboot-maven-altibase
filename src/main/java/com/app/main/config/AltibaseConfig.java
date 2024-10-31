@@ -26,5 +26,6 @@ public class AltibaseConfig {
         return sqlSessionFactoryBean.getObject();
 
     }
+    
 
 }
