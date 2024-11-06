@@ -153,8 +153,22 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+		            <excludeDevtools>false</excludeDevtools>
+		        </configuration>
 			</plugin>
-
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-jar-plugin</artifactId>
+			  <version>3.1.0</version>
+			  <configuration>
+			    <archive>
+			      <manifest>
+			        <mainClass>ccom.app.main.MainApplication</mainClass>
+			      </manifest>
+			    </archive>
+			  </configuration>
+			</plugin>
 			<!-- maven-compiler-plugin 설정 추가 -->
 		      <plugin>
 			  <groupId>org.apache.maven.plugins</groupId>
@@ -168,23 +182,6 @@
 			  </configuration>
 		      </plugin>
 		      
-		      <plugin>
-				  <groupId>org.apache.maven.plugins</groupId>
-				  <artifactId>maven-dependency-plugin</artifactId>
-				  <version>3.2.0</version>
-				  <executions>
-				    <execution>
-				      <id>copy-dependencies</id>
-				      <phase>prepare-package</phase>
-				      <goals>
-				        <goal>copy-dependencies</goal>
-				      </goals>
-				      <configuration>
-				        <outputDirectory>${project.build.directory}/libs</outputDirectory>
-				      </configuration>
-				    </execution>
-				  </executions>
-				</plugin>
 				
 		</plugins>
 	</build>
