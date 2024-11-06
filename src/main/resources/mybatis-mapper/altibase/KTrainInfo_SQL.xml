@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.main.altibase.mapper.KTrainInfoMapper">
+
+    <insert id="insetKTrainInfo" parameterType="com.app.main.altibase.vo.KTrainInfoVo">
+    	/** insetKTrainInfo */
+        MERGE INTO K_TRAIN_INFO T
+        USING DUAL
+        	ON (TRAIN_Y = #{trainY, jdbcType=VARCHAR}
+        	AND LINE = #{line, jdbcType=VARCHAR}
+        	)
+        WHEN MATCHED THEN
+         UPDATE SET
+         		  TRAIN_P = #{trainP, jdbcType=VARCHAR}
+         		, ORG_STN_CD = #{orgStnCd, jdbcType=VARCHAR}
+         		, ORG_STN_NM = (SELECT T.STATION_NM FROM STATION_STD T WHERE T.STATION_CD = #{orgStnCd, jdbcType=VARCHAR})
+				, DST_STN_CD = #{dstStnCd, jdbcType=VARCHAR}
+				, DST_STN_NM = (SELECT T.STATION_NM FROM STATION_STD T WHERE T.STATION_CD = #{dstStnCd, jdbcType=VARCHAR})
+				, UPDATEDATE = SYSDATE
+		WHEN NOT MATCHED THEN
+		INSERT (
+			  TRAIN_Y
+			, TRAIN_P
+			, LINE
+			, ORG_STN_CD
+			, ORG_STN_NM
+			, DST_STN_CD
+			, DST_STN_NM
+			, UPDATEDATE
+		)
+		VALUES (
+			  #{trainY, jdbcType=VARCHAR}
+			, #{trainP, jdbcType=VARCHAR}
+			, #{line, jdbcType=VARCHAR}
+			, #{orgStnCd, jdbcType=VARCHAR}
+			, (SELECT T.STATION_NM FROM STATION_STD T WHERE T.STATION_CD = #{orgStnCd, jdbcType=VARCHAR})
+			, #{dstStnCd, jdbcType=VARCHAR}
+			, (SELECT T.STATION_NM FROM STATION_STD T WHERE T.STATION_CD = #{dstStnCd, jdbcType=VARCHAR})
+			, SYSDATE)
+    </insert>
+
+	<delete id="deleteKTrainInfo" parameterType="com.app.main.altibase.vo.KTrainInfoVo">
+	/** deleteKTrainInfo*/
+	DELETE FROM K_TRAIN_INFO
+	</delete>
+</mapper>

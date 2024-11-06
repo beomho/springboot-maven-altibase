@@ -164,7 +164,7 @@
 			  <configuration>
 			    <archive>
 			      <manifest>
-			        <mainClass>ccom.app.main.MainApplication</mainClass>
+			        <mainClass>com.app.main.MainApplication</mainClass>
 			      </manifest>
 			    </archive>
 			  </configuration>
