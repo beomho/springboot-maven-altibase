@@ -78,11 +78,6 @@
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
       <version>3.2.0</version>
 		</dependency>
@@ -133,6 +128,27 @@
 		</dependencies>
 
 	<build>
+		<defaultGoal>install</defaultGoal>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -146,11 +162,30 @@
 			  <version>2.19.1</version>
 			  <configuration>
 			      <fork>true</fork>
-			      <!-- 사용하고자 하는 JDK의 javac 경로를 지정해준다. -->
+					<!-- 사용하고자 하는 JDK의 javac 경로를 지정해준다. -->
 				<executable>/home/b/study/springboot/jdk1.8.0_431/bin/javac</executable>
 			      <compilerVersion>8</compilerVersion>
 			  </configuration>
 		      </plugin>
+		      
+		      <plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-dependency-plugin</artifactId>
+				  <version>3.2.0</version>
+				  <executions>
+				    <execution>
+				      <id>copy-dependencies</id>
+				      <phase>prepare-package</phase>
+				      <goals>
+				        <goal>copy-dependencies</goal>
+				      </goals>
+				      <configuration>
+				        <outputDirectory>${project.build.directory}/libs</outputDirectory>
+				      </configuration>
+				    </execution>
+				  </executions>
+				</plugin>
+				
 		</plugins>
 	</build>
 

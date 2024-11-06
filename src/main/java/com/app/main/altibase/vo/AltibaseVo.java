@@ -2,33 +2,33 @@ package com.app.main.altibase.vo;
 
 public class AltibaseVo{
     
-    private Long id;
-    private String name;
+    private int idx;
+    private String title;
 
 
     // Getter, Setter
-    public Long getId() {
-        return this.id;
+    public int getIdx() {
+        return this.idx;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdx(int idx) {
+        this.idx = idx;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTitle() {
+        return this.title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     //ToString
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
+            " idx='" + getIdx() + "'" +
+            ", title='" + getTitle() + "'" +
             "}";
     }
 

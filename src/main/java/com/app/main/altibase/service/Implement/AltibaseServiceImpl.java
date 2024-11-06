@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service    //서비스 임을 명시
 public class AltibaseServiceImpl implements AltibaseService {
     
-    @Autowired
+	@Autowired
     private AltibaseMapper altibaseMapper;
 
     /**

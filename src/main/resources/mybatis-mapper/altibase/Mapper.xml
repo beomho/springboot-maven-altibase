@@ -5,7 +5,7 @@
 <mapper namespace="com.app.main.altibase.mapper.AltibaseMapper">
 
     <select id="list" resultType="com.app.main.altibase.vo.AltibaseVo">
-        SELECT * FROM tb_sample
+        SELECT IDX, TITLE FROM NOTICE
     </select>
 
 </mapper>
