@@ -3,24 +3,24 @@
   <groupId>com.example</groupId>
   <artifactId>scheduler14</artifactId>
   <versioning>
-    <lastUpdated>20241106235433</lastUpdated>
+    <lastUpdated>20241107041333</lastUpdated>
     <snapshot>
       <localCopy>true</localCopy>
     </snapshot>
     <snapshotVersions>
       <snapshotVersion>
-        <classifier>jar-with-dependencies</classifier>
         <extension>jar</extension>
         <value>0.0.1-SNAPSHOT</value>
-        <updated>20241106235433</updated>
-      </snapshotVersion>
-      <snapshotVersion>
-        <extension>jar</extension>
-        <value>0.0.1-SNAPSHOT</value>
-        <updated>20241106235433</updated>
+        <updated>20241107041333</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
+        <value>0.0.1-SNAPSHOT</value>
+        <updated>20241107041333</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <classifier>jar-with-dependencies</classifier>
+        <extension>jar</extension>
         <value>0.0.1-SNAPSHOT</value>
         <updated>20241106235433</updated>
       </snapshotVersion>
