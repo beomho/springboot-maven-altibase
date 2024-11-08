@@ -5,9 +5,9 @@
     <property name="ROLLING_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5} - %msg %n" />
     <property name="FILE_NAME" value="./logs/application.log" />
     <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd}.%i.log" />
-    <property name="MAX_FILE_SIZE" value="10MB" />
-    <property name="TOTAL_SIZE" value="30MB" />
-    <property name="MAX_HISTORY" value="2" />
+    <property name="MAX_FILE_SIZE" value="100MB" />
+    <property name="TOTAL_SIZE" value="300MB" />
+    <property name="MAX_HISTORY" value="14" />
 
 
     <!-- Console appender 설정 -->

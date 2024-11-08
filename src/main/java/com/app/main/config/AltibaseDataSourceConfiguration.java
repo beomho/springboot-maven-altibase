@@ -24,7 +24,6 @@ public class AltibaseDataSourceConfiguration {
 
     @Bean
     @Primary
-    @ConfigurationProperties("spring.datasource.hikari")
     public HikariDataSource dataSource() {
     	
     	HikariConfig hikariConfig = new HikariConfig();    

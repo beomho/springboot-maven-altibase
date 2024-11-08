@@ -30,6 +30,15 @@
 		<java.version>8</java.version>
 		<webapp.lib>${basedir}/lib</webapp.lib>
 	</properties>
+	
+	<repositories>
+		<repository>
+			<id>local-repository</id>
+			<name>local repository</name>
+			<url>file://${basedir}/lib</url>
+		</repository>
+	</repositories>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -41,6 +50,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>altibase</groupId>
+			<artifactId>altibase-jdbc-driver</artifactId>
+			<version>6.3.1.0.9</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -125,13 +141,7 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1</version>
 			</dependency>
-		<dependency>
-			<groupId>Altibase</groupId>
-			<artifactId>Altibase</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${webapp.lib}/Altibase.jar</systemPath>
-			</dependency>
+		
 		</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -160,7 +170,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-		            <excludeDevtools>false</excludeDevtools>
+		            <includeSystemScope>true</includeSystemScope>
 		        </configuration>
 			</plugin>
 
@@ -204,9 +214,6 @@
 			  <artifactId>maven-surefire-plugin</artifactId>
 			  <version>2.19.1</version>
 			  <configuration>
-			      <fork>true</fork>
-					<!-- 사용하고자 하는 JDK의 javac 경로를 지정해준다. -->
-				<executable>/home/b/study/springboot/jdk1.8.0_431/bin/javac</executable>
 			      <compilerVersion>8</compilerVersion>
 			  </configuration>
 		      </plugin>

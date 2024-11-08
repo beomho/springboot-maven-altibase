@@ -27,16 +27,19 @@ public class SchedulerApp {
 	@Autowired
 	private KTrainInfoService kTrainInfoService;
 
-//	@Scheduled(cron = "0 0 5 * * *") 
-	@Scheduled(cron = "0 55 * * * *") 
+	@Scheduled(cron = "0 0 5 * * *") 
+//	@Scheduled(cron = "0 10 * * * *") 
 	public void scheduled05() throws Exception{
+		log.info("scheduled05()START");
 		deleteData();
 		callAPI("1");
 		callAPI("4");
 	}
 	
 	@Scheduled(cron = "0 0 17 * * *") 
+//	@Scheduled(cron = "0 40 * * * *") 
 	public void scheduled17() throws Exception{
+		log.info("scheduled17()START");
 		callAPI("1");
 		callAPI("4");
 	}
