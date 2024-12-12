@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 번들 메시지 소스 리로더 등록 -->
+	<bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:/safetykeeper/message/message-account</value>
+				<value>classpath:/safetykeeper/message/message-beacon</value>
+				<value>classpath:/safetykeeper/message/message-common</value>
+				<value>classpath:/safetykeeper/message/message-complain</value>
+				<value>classpath:/safetykeeper/message/message-csv</value>
+				<value>classpath:/safetykeeper/message/message-event</value>
+				<value>classpath:/safetykeeper/message/message-excel</value>
+				<value>classpath:/safetykeeper/message/message-login</value>
+				<value>classpath:/safetykeeper/message/message-mail</value>
+				<value>classpath:/safetykeeper/message/message-manager</value>
+				<value>classpath:/safetykeeper/message/message-message</value>
+				<value>classpath:/safetykeeper/message/message-mobileApi</value>
+				<value>classpath:/safetykeeper/message/message-notice</value>
+				<value>classpath:/safetykeeper/message/message-openapi</value>
+				<value>classpath:/safetykeeper/message/message-serverApi</value>
+				<value>classpath:/safetykeeper/message/message-sns</value>
+				<value>classpath:/safetykeeper/message/message-station</value>
+				<value>classpath:/safetykeeper/message/message-statis</value>
+				<value>classpath:/safetykeeper/message/message-traininfo</value>
+			</list>
+		</property>
+		<property name="cacheSeconds">
+			<value>60</value>
+		</property>
+	</bean>
+
+	<!-- 메시지 소스 빈 등록 -->
+	<bean class="egovframework.com.cmm.EgovMessageSource" id="egovMessageSource">
+		<property name="reloadableResourceBundleMessageSource">
+			<ref bean="messageSource" />
+		</property>
+	</bean>
+
+	<import resource="classpath:safetykeeper/spring/context-properties.xml"/>
+	<import resource="classpath:safetykeeper/spring/context-datasource.xml"/>
+</beans>

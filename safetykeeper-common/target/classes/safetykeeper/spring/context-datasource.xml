@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 데이터 소스 설정 -->
+	<bean id="hikariConfig" class="com.seoulmetro.safetykeeper.common.config.CryptoDataSourceConfig">
+		<property name="poolName" value="${db.poolName}"/>
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="jdbcUrl" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="connectionTestQuery" value="select 1 from dual"/>
+		<property name="maximumPoolSize" value="${db.maximumPoolSize}"/>
+		<property name="minimumIdle" value="${db.maximumPoolSize}"/>
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="testWhileIdle">true</prop>
+				<prop key="timeBetweenEvictionRunsMillis">60000</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+	
+</beans>

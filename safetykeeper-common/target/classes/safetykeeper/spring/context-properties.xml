@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 프로퍼티 플래이스홀더 설정 -->
+	<beans profile="local">
+		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations">
+				<list>
+					<value>classpath*:/safetykeeper/property/db.properties</value>
+				</list>
+			</property>
+		</bean>
+	</beans>
+	
+	<beans profile="dev">
+		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations">
+				<list>
+					<value>classpath*:/safetykeeper/property/dev/db.properties</value>
+				</list>
+			</property>
+		</bean>
+	</beans>
+	
+	<beans profile="prod">
+		<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations">
+				<list>
+					<value>classpath*:/safetykeeper/property/prod/db.properties</value>
+				</list>
+			</property>
+		</bean>
+	</beans>
+
+</beans>
