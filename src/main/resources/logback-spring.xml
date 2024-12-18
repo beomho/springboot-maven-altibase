@@ -5,11 +5,11 @@
     <property name="ROLLING_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5} - %msg %n" />
     <property name="FILE_NAME" value="./logs/application.log" />
     <property name="LOG_NAME_PATTERN" value="./logs/application-%d{yyyy-MM-dd}.%i.log" />
-    <property name="MAX_FILE_SIZE" value="100MB" />
-    <property name="TOTAL_SIZE" value="300MB" />
+    <property name="MAX_FILE_SIZE" value="300MB" />
+    <property name="TOTAL_SIZE" value="500MB" />
     <property name="MAX_HISTORY" value="14" />
 
-
+	
     <!-- Console appender 설정 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -31,34 +31,9 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="jdbc" level="OFF" additive="false">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
-    <logger name="jdbc.sqlonly" level="DEBUG" additive="false" >
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
-    <logger name="jdbc.sqltiming" level="OFF" additive="false" >
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
-    <logger name="org.hibernate.SQL" level="INFO" additive="false">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
-    <logger name="com.example.todolist.controller" level="INFO" additive="true" >
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
-    <logger name="com.example.todolist.service" level="DEBUG" additive="false" >
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
-    <logger name="com.example.todolist.domain" level="DEBUG" additive="false" >
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="ROLLING_LOG_FILE"/>
-    </logger>
+	<logger name="com.app.main" level="DEBUG" appender-ref="STDOUT" />
+    <logger name="jdbc.sqlonly" level="INFO" appender-ref="ROLLING_LOG_FILE" />
+    <logger name="jdbc.resultsettable" level="INFO" appender-ref="ROLLING_LOG_FILE" />
 
 
     <root level="INFO">
