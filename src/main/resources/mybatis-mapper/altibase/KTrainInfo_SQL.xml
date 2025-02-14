@@ -4,8 +4,8 @@
 
 <mapper namespace="com.app.main.altibase.mapper.KTrainInfoMapper">
 
-    <insert id="insetKTrainInfo" parameterType="com.app.main.altibase.vo.KTrainInfoVo">
-    	/** insetKTrainInfo */
+    <insert id="insertKTrainInfo" parameterType="com.app.main.altibase.vo.KTrainInfoVo">
+    	/** insertKTrainInfo */
         MERGE INTO K_TRAIN_INFO T
         USING DUAL
         	ON (TRAIN_Y = #{trainY, jdbcType=VARCHAR}

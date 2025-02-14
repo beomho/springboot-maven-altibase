@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.main.altibase.mapper.TimeTableMapper">
+
+    <insert id="insertTimetableMapping" parameterType="com.app.main.altibase.vo.TimeTableMappingVo">
+    	/** insertTimetableMapping */
+        MERGE INTO TIMETABLE_MAPPING T
+        USING DUAL
+        	ON (LINE = #{line, jdbcType=INTEGER}
+        	AND TRNNO = #{trnno, jdbcType=VARCHAR}
+        	AND DAY_CD = #{dayCd, jdbcType=VARCHAR}
+        	)
+        WHEN MATCHED THEN
+         UPDATE SET
+				  DIRECT_AT  = DECODE(#{directAt, jdbcType=CHAR}, 'G', '0', 'D', '1')
+				, ORG_STN_CD = #{orgStnCd, jdbcType=VARCHAR}
+				, ORG_STN_NM = #{orgStnNm, jdbcType=VARCHAR}
+				, DST_STN_CD = #{dstStnCd, jdbcType=VARCHAR}
+				, DST_STN_NM = #{dstStnNm, jdbcType=VARCHAR}
+				, UPDATE_DT  = #{updateDt, jdbcType=VARCHAR}
+				, REG_DT 	 = SYSDATE
+		WHEN NOT MATCHED THEN
+		INSERT (
+			  LINE
+			, TRNNO
+			, DAY_CD
+			, DIRECT_AT
+			, ORG_STN_CD
+			, ORG_STN_NM
+			, DST_STN_CD
+			, DST_STN_NM
+			, UPDATE_DT
+			, REG_DT
+		)
+		VALUES (
+			  #{line, jdbcType=INTEGER}   
+			, #{trnno, jdbcType=VARCHAR}  
+			, #{dayCd, jdbcType=VARCHAR}  
+			, DECODE(#{directAt, jdbcType=CHAR}, 'G', '0', 'D', '1')
+			, #{orgStnCd, jdbcType=VARCHAR}
+			, #{orgStnNm, jdbcType=VARCHAR}
+			, #{dstStnCd, jdbcType=VARCHAR}
+			, #{dstStnNm, jdbcType=VARCHAR}
+			, #{updateDt, jdbcType=VARCHAR}
+			, SYSDATE                     
+		)			
+    </insert>
+
+	<delete id="deleteTimetableMapping" parameterType="com.app.main.altibase.vo.TimeTableVo">
+	/** deleteTimetableMapping*/
+	DELETE FROM TIMETABLE_MAPPING
+	</delete>
+</mapper>

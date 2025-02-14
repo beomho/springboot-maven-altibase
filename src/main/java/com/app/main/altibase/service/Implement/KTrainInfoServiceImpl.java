@@ -20,16 +20,16 @@ public class KTrainInfoServiceImpl implements KTrainInfoService {
     private KTrainInfoMapper kTrainInfoMapper;
 
 	@Override
-	public void insetKTrainInfo(List<KTrainInfoVo> kTrainInfoVoList) throws Exception {
+	public void insertKTrainInfo(List<KTrainInfoVo> kTrainInfoVoList) throws Exception {
 		
 		if(kTrainInfoVoList!= null) {
-			log.info("insetKTrainInfo {} ",kTrainInfoVoList.size());
+			log.info("insertKTrainInfo {} ",kTrainInfoVoList.size());
 			
 			int i=0; 
 			for(KTrainInfoVo kTrainInfoVo: kTrainInfoVoList) {
 				
-				kTrainInfoMapper.insetKTrainInfo(kTrainInfoVo);
-				log.info("insetKTrainInfo {} ", i);
+				kTrainInfoMapper.insertKTrainInfo(kTrainInfoVo);
+				log.info("insertKTrainInfo {} ", i);
 				i++;
 			}
 		}

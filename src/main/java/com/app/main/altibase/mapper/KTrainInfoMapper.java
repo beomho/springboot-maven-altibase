@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface KTrainInfoMapper {
 
     //전체 리스트 조회
-	public void insetKTrainInfo(KTrainInfoVo kTrainInfoVo) throws Exception;
+	public void insertKTrainInfo(KTrainInfoVo kTrainInfoVo) throws Exception;
 
     public void deleteKTrainInfo() throws Exception;
 }

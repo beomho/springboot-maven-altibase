@@ -28,9 +28,10 @@ public class AltibaseDataSourceConfiguration {
     	
     	HikariConfig hikariConfig = new HikariConfig();    
     	hikariConfig.setDriverClassName("Altibase.jdbc.driver.AltibaseDriver");    
-    	hikariConfig.setJdbcUrl("");
-    	hikariConfig.setUsername("");
-    	hikariConfig.setPassword("");
+//    	hikariConfig.setJdbcUrl("jdbc:Altibase://175.114.170.27:22007/SSCSGDEV");
+    	hikariConfig.setJdbcUrl("jdbc:Altibase://172.16.4.107:22007/SSCSG");
+    	hikariConfig.setUsername("safety");
+    	hikariConfig.setPassword("safetykeeper");
     	hikariConfig.setMaximumPoolSize(5);
     	hikariConfig.setConnectionTestQuery("SELECT 1");
     	hikariConfig.setPoolName("springHikariCP");
