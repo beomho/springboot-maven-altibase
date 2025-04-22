@@ -1,3 +1,4 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Thu Nov 07 08:49:02 KST 2024
+#Tue Dec 17 09:07:27 KST 2024
 google-cloud-pubsub-bom-1.123.14.pom>central=
+google-cloud-pubsub-bom-1.123.14.pom>mvn2s=

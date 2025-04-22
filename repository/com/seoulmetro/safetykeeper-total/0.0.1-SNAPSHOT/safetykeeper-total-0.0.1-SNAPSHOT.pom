@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.seoulmetro</groupId>
+    <artifactId>safetykeeper-total</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Seoul Metro Safety Keeper Integrated Module</name>
+
+    <properties>
+        <java.build.version>1.8</java.build.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+
+        <spring.maven.artifact.version>4.3.22.RELEASE</spring.maven.artifact.version>
+        <egovframework.rte.version>3.9.0</egovframework.rte.version>
+
+        <!-- <javax.servlet.version>2.5</javax.servlet.version> -->
+        <javax.servlet.version>3.0.1</javax.servlet.version>
+
+        <apache.log4j.version>2.12.4</apache.log4j.version>
+        <hikaricp.version>2.4.13</hikaricp.version>
+        <com.fasterxml.jackson.core.version>2.5.0</com.fasterxml.jackson.core.version>
+        <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+        <jasypt.version>1.9.2</jasypt.version>
+        <jsontier.version>0.9.23</jsontier.version>
+
+        <junit.version>4.12</junit.version>
+        <mokito.version>1.10.19</mokito.version>
+
+        <web-inf.lib.path>${project.basedir}/src/main/webapp/WEB-INF/lib</web-inf.lib.path>
+    </properties>
+
+    <modules>
+        <module>safetykeeper-admin</module>
+        <module>safetykeeper-mobile</module>
+        <module>safetykeeper-common</module>
+        <module>safetykeeper-scheduler</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>mvn2s</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>egovframe</id>
+            <url>https://maven.egovframe.go.kr/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 표준프레임워크 실행환경 -->
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.bat.core</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.ptl.mvc</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.psl.dataaccess</artifactId>
+                <version>${egovframework.rte.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-slf4j-impl</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.psl.data.jpa</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.cmmn</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.crypto</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.idgnr</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.property</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.security</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.excel</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.logging</artifactId>
+                <version>${egovframework.rte.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-slf4j-impl</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j-over-slf4j</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.filehandling</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.fdl.string</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>egovframework.rte</groupId>
+                <artifactId>egovframework.rte.itl.integration</artifactId>
+                <version>${egovframework.rte.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <!-- <artifactId>servlet-api</artifactId> -->
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${apache.log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${apache.log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${apache.log4j.version}</version>
+            </dependency>
+
+            <!-- DB Pool - HikariCP -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP-java7</artifactId>
+                <version>${hikaricp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${com.fasterxml.jackson.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${com.fasterxml.jackson.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${org.codehaus.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>${org.codehaus.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jsoniter</groupId>
+                <artifactId>jsoniter</artifactId>
+                <version>${jsontier.version}</version>
+            </dependency>
+
+            <!-- JASYPT -->
+            <dependency>
+                <groupId>org.jasypt</groupId>
+                <artifactId>jasypt-spring31</artifactId>
+                <version>${jasypt.version}</version>
+            </dependency>
+
+            <!-- spring context -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.maven.artifact.version}</version>
+            </dependency>
+
+            <!-- Unit Test  -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.maven.artifact.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mokito.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>${java.build.version}</source>
+                        <target>${java.build.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

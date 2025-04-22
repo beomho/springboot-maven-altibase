@@ -1,5 +1,4 @@
 HELP.md
-target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -33,4 +32,5 @@ build/
 .vscode/
 
 /logs/
-*SNAPSHO*.jar
+target/
+#*SNAPSHO*.jar
