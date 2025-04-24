@@ -3,7 +3,7 @@
   <groupId>com.seoulmetro</groupId>
   <artifactId>safetykeeper-common</artifactId>
   <versioning>
-    <lastUpdated>20250421235851</lastUpdated>
+    <lastUpdated>20250424001047</lastUpdated>
     <snapshot>
       <localCopy>true</localCopy>
     </snapshot>
@@ -11,12 +11,12 @@
       <snapshotVersion>
         <extension>pom</extension>
         <value>0.0.1-SNAPSHOT</value>
-        <updated>20250421235851</updated>
+        <updated>20250424001047</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>jar</extension>
         <value>0.0.1-SNAPSHOT</value>
-        <updated>20250421235851</updated>
+        <updated>20250424001047</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
